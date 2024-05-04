@@ -1,26 +1,3 @@
-'''
-This module is a Python implementation of:
-
-    A. Efros and T. Leung, "Texture Synthesis by Non-parametric Sampling,"
-    Proceedings of the Seventh IEEE International Conference on Computer
-    Vision, September 1999.
-
-Specifically, this module implements texture synthesis by growing a 3x3 texture patch 
-pixel-by-pixel. Please see the authors' project page for additional algorithm details: 
-
-    https://people.eecs.berkeley.edu/~efros/research/EfrosLeung.html
-
-Example:
-
-    Generate a 50x50 texture patch from a texture available at the input path and save it to
-    the output path. Also, visualize the synthesis process:
-
-        $ python synthesis.py --sample_path=[input path] --out_path=[output path] --visualize
-
-'''
-
-__author__ = 'Maxwell Goldberg'
-
 import argparse
 import cv2
 import numpy as np
@@ -30,7 +7,6 @@ EIGHT_CONNECTED_NEIGHBOR_KERNEL = np.array([[1., 1., 1.],
                                             [1., 1., 1.]], dtype=np.float64)
 SIGMA_COEFF = 6.4      # The denominator for a 2D Gaussian sigma used in the reference implementation.
 ERROR_THRESHOLD = 0.1  # The default error threshold for synthesis acceptance in the reference implementation.
-
 
 def normalized_ssd(sample, window, mask):
     wh, ww = window.shape
