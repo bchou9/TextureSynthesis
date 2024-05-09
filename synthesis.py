@@ -185,12 +185,12 @@ def synthesize_texture(original_sample, window_size, kernel_size, visualize):
             mask[ch, cw] = 1
             result_window[ch, cw] = original_sample[selected_index[0], selected_index[1]]
 
-            if visualize:
-                cv2.imshow('synthesis window', result_window)
-                key = cv2.waitKey(1) 
-                if key == 27:
-                    cv2.destroyAllWindows()
-                    return result_window
+        if visualize:
+            cv2.imshow('synthesis window', result_window)
+            key = cv2.waitKey(1)
+            if key == 27:
+                cv2.destroyAllWindows()
+                return result_window
 
     if visualize:
         cv2.imshow('synthesis window', result_window)
@@ -218,9 +218,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Perform texture synthesis')
     parser.add_argument('--sample_path', type=str, required=True, help='Path to the texture sample')
     parser.add_argument('--out_path', type=str, required=False, help='Output path for synthesized texture')
-    parser.add_argument('--window_height', type=int,  required=False, default=500, help='Height of the synthesis window')
-    parser.add_argument('--window_width', type=int, required=False, default=500, help='Width of the synthesis window')
-    parser.add_argument('--kernel_size', type=int, required=False, default=11, help='One dimension of the square synthesis kernel')
+    parser.add_argument('--window_height', type=int,  required=False, default=256, help='Height of the synthesis window')
+    parser.add_argument('--window_width', type=int, required=False, default=256, help='Width of the synthesis window')
+    parser.add_argument('--kernel_size', type=int, required=False, default=15, help='One dimension of the square synthesis kernel')
     parser.add_argument('--visualize', required=False, action='store_true', help='Visualize the synthesis process')
     args = parser.parse_args()
     return args
